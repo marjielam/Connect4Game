@@ -13,7 +13,7 @@ class Board
      I: 8,
      J: 9
    }
-   
+
   def initialize
     @board = Array.new(10) { Array.new }
   end
@@ -30,21 +30,19 @@ class Board
 
   def check_for_win
     if check_horizontal_wins
-      return check_horizontal_wins
+      check_horizontal_wins
     elsif check_vertical_wins
-      return check_vertical_wins
+      check_vertical_wins
     else
-      return nil
+      nil
     end
   end
 
   def check_horizontal_wins
     winning_streak = 1
     last_char = ""
-    row = 0
-    while (row < 10) do
-      column = 0
-      while (column < 10) do
+    (0..9).each do |row|
+      (0..9).each do |column|
         if (@board[column][row].nil?)
           winning_streak = 0
         elsif (@board[column][row] == last_char)
@@ -56,20 +54,16 @@ class Board
         if (winning_streak == 4)
           return last_char
         end
-        column += 1
       end
-      row += 1
     end
-    return nil
+    nil
   end
 
   def check_vertical_wins
     winning_streak = 1
     last_char = ""
-    column = 0
-    while (column < 10) do
-      row = 0
-      while (row < 10) do
+    (0..9).each do |column|
+      (0..9).each do |row|
         if (@board[column][row].nil?)
           winning_streak = 0
         elsif (@board[column][row] == last_char)
@@ -81,12 +75,9 @@ class Board
         if (winning_streak == 4)
           return last_char
         end
-        row += 1
       end
-      column += 1
     end
-
-    return nil
+    nil
   end
 
   def print_board
@@ -121,7 +112,7 @@ class Board
         return false
       end
     end
-    return true
+      return true
   end
 
 end

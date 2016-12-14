@@ -146,21 +146,6 @@ RSpec.describe Board do
     end
   end
 
-  # describe "#show_piece" do
-  #   it "shows the piece at a specific location given the column and the row" do
-  #     my_board.add_piece("A", "X")
-  #     my_board.add_piece("A", "X")
-  #     my_board.add_piece("A", "X")
-  #     my_board.add_piece("B", "O")
-  #     my_board.add_piece("H", "X")
-  #
-  #     expect(my_board.show_piece(0, 0)).to eq("X")
-  #     expect(my_board.show_piece(0, 2)).to eq("X")
-  #     expect(my_board.show_piece(1, 0)).to eq("O")
-  #     expect(my_board.show_piece(7, 0)).to eq("X")
-  #   end
-  # end
-
   describe "#print_board" do
     it "accurately prints the current state of empty board" do
       expected_board = ""
