@@ -33,6 +33,10 @@ class Board
       check_horizontal_wins
     elsif check_vertical_wins
       check_vertical_wins
+    elsif check_right_diagonal_wins
+      check_right_diagonal_wins
+    elsif check_left_diagonal_wins
+      check_left_diagonal_wins
     else
       nil
     end
@@ -74,6 +78,56 @@ class Board
         end
         if (winning_streak == 4)
           return last_char
+        end
+      end
+    end
+    nil
+  end
+
+  def check_right_diagonal_wins
+    (0..6).each do |column|
+      (0..6).each do |row|
+        winning_char = @board[column][row]
+        winning_streak = 1
+        check_column = column
+        check_row = row
+        if !winning_char.nil?
+          3.times do
+            check_column += 1
+            check_row += 1
+            if (@board[check_column][check_row] != winning_char)
+              break
+            end
+            winning_streak += 1
+          end
+          if winning_streak == 4
+            return winning_char
+          end
+        end
+      end
+    end
+    nil
+  end
+
+  def check_left_diagonal_wins
+    (3..9).each do |column|
+      (0..6).each do |row|
+        winning_char = @board[column][row]
+        winning_streak = 1
+        check_column = column
+        check_row = row
+        if !winning_char.nil?
+          3.times do
+            check_column -= 1
+            check_row += 1
+            if (@board[check_column][check_row] != winning_char)
+              break
+            end
+            winning_streak += 1
+          end
+          if winning_streak == 4
+            return winning_char
+          end
         end
       end
     end

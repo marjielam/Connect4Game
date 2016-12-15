@@ -146,6 +146,63 @@ RSpec.describe Board do
     end
   end
 
+  describe "#check_right_horizontal_wins" do
+    it "returns nil if there are no right diagonal win" do
+      expect(my_board.check_right_diagonal_wins).to eq(nil)
+    end
+    it "can accurately identify a right diagonal win" do
+      my_board.add_piece("A", "X")
+      my_board.add_piece("B", "O")
+      my_board.add_piece("B", "X")
+      my_board.add_piece("C", "O")
+      my_board.add_piece("C", "O")
+      my_board.add_piece("C", "X")
+      my_board.add_piece("D", "O")
+      my_board.add_piece("D", "O")
+      my_board.add_piece("D", "O")
+      my_board.add_piece("D", "X")
+
+      my_board2.add_piece("G", "X")
+      my_board2.add_piece("G", "O")
+      my_board2.add_piece("H", "X")
+      my_board2.add_piece("H", "X")
+      my_board2.add_piece("H", "O")
+      my_board2.add_piece("I", "O")
+      my_board2.add_piece("I", "X")
+      my_board2.add_piece("I", "X")
+      my_board2.add_piece("I", "O")
+      my_board2.add_piece("J", "O")
+      my_board2.add_piece("J", "X")
+      my_board2.add_piece("J", "X")
+      my_board2.add_piece("J", "O")
+      my_board2.add_piece("J", "O")
+
+      expect(my_board.check_right_diagonal_wins).to eq("X")
+      expect(my_board2.check_right_diagonal_wins).to eq("O")
+    end
+  end
+
+  describe "#check_left_diagonal_wins" do
+    it "returns nil if there are no left diagonal win" do
+      expect(my_board.check_left_diagonal_wins).to eq(nil)
+    end
+    it "can accurately identify a left diagonal win" do
+      my_board.add_piece("D", "X")
+      my_board.add_piece("C", "O")
+      my_board.add_piece("C", "X")
+      my_board.add_piece("B", "O")
+      my_board.add_piece("B", "O")
+      my_board.add_piece("B", "X")
+      my_board.add_piece("A", "O")
+      my_board.add_piece("A", "O")
+      my_board.add_piece("A", "O")
+      my_board.add_piece("A", "X")
+
+      expect(my_board.check_left_diagonal_wins).to eq("X")
+    end
+
+  end
+
   describe "#print_board" do
     it "accurately prints the current state of empty board" do
       expected_board = ""
